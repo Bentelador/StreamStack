@@ -59,7 +59,6 @@ async function performSort() {
 function displayResults(currentResults) {
     const resultsGrid = document.getElementById('resultsGrid');
     const loadMoreBtn = document.getElementById('loadMore');
-    clearMovieDetails()
     if (currentResults.length === 0) {
         resultsGrid.innerHTML = `
             <div class="no-results">
@@ -80,6 +79,7 @@ function displayResults(currentResults) {
     
     // Clear previous results
     resultsGrid.innerHTML = '';
+    console.log(resultsGrid.innerHTML)
     
     // Display results
     resultsToShow.forEach(movie => {
@@ -326,9 +326,7 @@ searchbtn.addEventListener("click", function() {
     loadMoreResults();
 })
 // Handle search input Enter key
-document.getElementById('searchInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        performSearch();
-    }
+document.getElementById('searchInput').addEventListener('changed', function() {
+    performSearch();
 });
 
