@@ -307,7 +307,7 @@ function addToWatchlist(movieId, movieTitle) {
 genreList.addEventListener("change", (event) => {
     console.log(event.target.value);
     sortResults(event.target,"genre");
-}
+})
 
 // Handle search input Enter key
 document.getElementById('searchInput').addEventListener('keypress', function(e) {
