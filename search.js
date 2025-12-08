@@ -30,6 +30,7 @@ async function loadMovies() {
     if (searchQuery) {
         console.log("a");
         document.getElementById('searchInput').value = searchQuery;
+        query = searchQuery
         const OutsideSearch = await ben(searchQuery, "relevance", allMovies);
         console.log(OutsideSearch);
         displayResults(OutsideSearch);
