@@ -1,8 +1,11 @@
 import ben, { searchfunc } from "./searchmodule.js"
 let allMovies = [];
+let sortBy = "";
+let genres = [];
 let currentPage = 1;
 const resultsPerPage = 12;
 let selectedMovie = null;
+const query = "";
 
 // Load movies when page loads
 document.addEventListener('DOMContentLoaded', function() {
@@ -25,41 +28,26 @@ async function loadMovies() {
         const OutsideSearch = await ben(searchQuery, "relevance", allMovies);
         console.log(OutsideSearch);
         displayResults(OutsideSearch);
-        updateResultsInfo(searchQuery);
+        updateResultsInfo(searchQuery,currentResults);
     }
 }
 
 
 // Perform search
 function performSearch(searchTerm = "") {
-    const query = searchTerm || document.getElementById('searchInput').value.trim();
-    
-    // Update URL without reloading page
-    //window.history.replaceState({}, '', `search-results.html?q=${encodeURIComponent(query)}`);
-    //deprecate na needed only for loading into the search from the main pages, so planning on adding a load movies when loading into the search page
-    
-    // Filter movies based on search query
-    currentResults = allMovies.filter(movie => {
-        const searchLower = query.toLowerCase();
-        const titleMatch = movie.title.toLowerCase().includes(searchLower);
-        
-        // Check genres (array)
-        let genreMatch = false; 
-        if (movie.genre && Array.isArray(movie.genre)) {
-            genreMatch = movie.genre.some(genre => 
-                genre.toLowerCase().includes(searchLower)
-            );
-        }
-        
-        // Check synopsis
-        const synopsisMatch = movie.synopsis && 
-            movie.synopsis.toLowerCase().includes(searchLower);
-        
-        return titleMatch || genreMatch || synopsisMatch;
-    });
+    query = searchTerm || document.getElementById('searchInput').value.trim();
+    const res = searchfunc(query,genres,sortBy);
     currentPage = 1;
-    displayResults();
-    updateResultsInfo(query);
+    displayResults(res);
+    updateResultsInfo(query, currentResults);
+}
+
+function performSort() {
+    query = searchTerm
+    const res = searchfunc(query,genres,sortBy);
+    currentPage = 1;
+    displayResults(res);
+    updateResultsInfo(query, currentResults);
 }
 
 // Display results
@@ -190,74 +178,26 @@ function clearMovieDetails() {
 }
 
 // Sort results
-function sortResults(rad) {
-    if (rad.checked) {
-        const sortBy = rad.value
-        switch(sortBy) {
-        case 'year':
-            currentResults.sort((a, b) => (b.year || 0) - (a.year || 0));
-            break;
-        case 'year_old':
-            currentResults.sort((a, b) => (a.year || 0) - (b.year || 0));
-            break;
-        case 'rating':
-            currentResults.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-            break;
-        case 'title':
-            currentResults.sort((a, b) => a.title.localeCompare(b.title));
-            break;
-        case 'relevance':
-        default:
-            // Keep search relevance order
-            break;
+function sortResults(rad,value) {
+    if (rad.checked && value == "sort") {
+        sortBy = rad.value;
+    }
+    if (rad.checked && value == "genre") {
+        genres.push(rad.value);
     }
     
     currentPage = 1;
-    displayResults();
+    performSort();
     }
 }
 
-// Filter by genre
-function filterResults() {
-    const selectedGenre = document.getElementById('genreSelect').value;
-    
-    if (selectedGenre === 'all') {
-        // Reset to all search results
-        const query = document.getElementById('searchInput').value;
-        performSearch(query);
-        return;
-    }
-    
-    // Filter current results by genre
-    const filteredResults = allMovies.filter(movie => 
-        movie.genre && Array.isArray(movie.genre) && 
-        movie.genre.some(g => g.toLowerCase() === selectedGenre.toLowerCase())
-    );
-    
-    // Also apply search query if exists
-    const query = document.getElementById('searchInput').value;
-    if (query) {
-        currentResults = filteredResults.filter(movie => 
-            movie.title.toLowerCase().includes(query.toLowerCase()) ||
-            (movie.synopsis && movie.synopsis.toLowerCase().includes(query.toLowerCase()))
-        );
-    } else {
-        currentResults = filteredResults;
-    }
-    
-    currentPage = 1;
-    displayResults();
-    updateResultsInfo(query || 'All Movies', selectedGenre);
-}
-
-// Load more results (pagination)
 function loadMoreResults() {
     currentPage++;
-    displayResults();
+    performSort();
 }
 
 // Update results info text
-function updateResultsInfo(query, genre = null) {
+function updateResultsInfo(query, genres = null, currentResults) {
     const resultsCount = document.getElementById('resultsCount');
     let text = '';
     
@@ -265,11 +205,11 @@ function updateResultsInfo(query, genre = null) {
         text = `No results found for "${query}"`;
     } else if (query) {
         text = `${currentResults.length} results for "${query}"`;
-        if (genre && genre !== 'all') {
-            text += ` in ${genre}`;
+        if (genres && genres !== 'all') {
+            text += ` in ${genres}`;
         }
-    } else if (genre && genre !== 'all') {
-        text = `${currentResults.length} ${genre} movies`;
+    } else if (genres && genres !== 'all') {
+        text = `${currentResults.length} ${genres} movies`;
     } else {
         text = `${currentResults.length} movies`;
     }
