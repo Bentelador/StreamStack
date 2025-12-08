@@ -61,17 +61,19 @@ async function sorta(sort,result,ss) {
   return bb
 }
 
-async function searchfunc(serch, BS, sort, jsonData){
+async function searchfunc(serch, BS, sort, jsonData, Amount){
   let result;
   const arr = BS
   const res = jsonData.filter(n => arr.every(genreArray => n.genre.includes(genreArray)))
   let aresult = res.filter(n => n.title.toLowerCase().includes(serch))
-  result = sorta(sort,aresult,serch)
+  let resultuncut = sorta(sort,aresult,serch)
+  result = resultuncut.slice(0,amount)
   return result;
 }
 
 export default ben
 export { searchfunc }
+
 
 
 
