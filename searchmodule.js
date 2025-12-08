@@ -66,13 +66,7 @@ async function searchfunc(serch, BS, sort){
   await fetch('https://raw.githubusercontent.com/Bentelador/movie-bai/refs/heads/main/MDB.json')
     .then(response => response.json())
     .then(jsonData => {
-      const cont = BS.children
-      const arr = []
-      for (let i = 0; i < cont.length; i++) {
-        if (cont[i].checked == true) {
-        arr.push(cont[i].name)
-        }
-      }
+      const arr = BS
       const res = jsonData.filter(n => arr.every(genreArray => n.genre.includes(genreArray)))
       let aresult = res.filter(n => n.title.toLowerCase().includes(serch))
       result = sorta(sort,aresult,serch)
@@ -82,6 +76,7 @@ async function searchfunc(serch, BS, sort){
 
 export default ben
 export { searchfunc }
+
 
 
 
