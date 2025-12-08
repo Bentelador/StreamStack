@@ -41,16 +41,16 @@ async function loadMovies() {
 // Perform search
 async function performSearch(searchTerm = "") {
     query = searchTerm || document.getElementById('searchInput').value.trim();
-    const res = searchfunc(query,genres,sortBy,allMovies);
+    const currentResults = searchfunc(query,genres,sortBy,allMovies);
     currentPage = 1;
-    displayResults(res);
+    displayResults(currentResults);
     updateResultsInfo(query, currentResults);
 }
 
 async function performSort() {
-    const res = await searchfunc(query,genres,sortBy,allMovies);
-    console.log(res)
-    displayResults(res);
+    const currentResults = await searchfunc(query,genres,sortBy,allMovies);
+    console.log(currentResults)
+    displayResults(currentResults);
     updateResultsInfo(query, currentResults);
 }
 
