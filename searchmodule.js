@@ -61,21 +61,18 @@ async function sorta(sort,result,ss) {
   return bb
 }
 
-async function searchfunc(serch, BS, sort){
+async function searchfunc(serch, BS, sort, jsonData){
   let result;
-  await fetch('https://raw.githubusercontent.com/Bentelador/movie-bai/refs/heads/main/MDB.json')
-    .then(response => response.json())
-    .then(jsonData => {
-      const arr = BS
-      const res = jsonData.filter(n => arr.every(genreArray => n.genre.includes(genreArray)))
-      let aresult = res.filter(n => n.title.toLowerCase().includes(serch))
-      result = sorta(sort,aresult,serch)
-    })
+  const arr = BS
+  const res = jsonData.filter(n => arr.every(genreArray => n.genre.includes(genreArray)))
+  let aresult = res.filter(n => n.title.toLowerCase().includes(serch))
+  result = sorta(sort,aresult,serch)
   return result;
 }
 
 export default ben
 export { searchfunc }
+
 
 
 
