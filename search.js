@@ -43,6 +43,7 @@ async function loadMovies() {
 async function performSearch(searchTerm = "") {
     query = searchTerm || document.getElementById('searchInput').value.trim();
     const currentResults = searchfunc(query,genres,sortBy,allMovies);
+    console.log(query,genres,sortBy)
     currentPage = 1;
     displayResults(currentResults);
     updateResultsInfo(query, currentResults);
@@ -58,7 +59,7 @@ async function performSort() {
 function displayResults(currentResults) {
     const resultsGrid = document.getElementById('resultsGrid');
     const loadMoreBtn = document.getElementById('loadMore');
-    
+    clearMovieDetails()
     if (currentResults.length === 0) {
         resultsGrid.innerHTML = `
             <div class="no-results">
@@ -72,6 +73,7 @@ function displayResults(currentResults) {
     }
     
     // Calculate which results to show (pagination)
+    console.log(currentResults)
     const startIndex = 0;
     const endIndex = currentPage * resultsPerPage;
     const resultsToShow = currentResults.slice(startIndex, endIndex);
