@@ -5,7 +5,7 @@ const searchbtn = document.getElementById("search-btn");
 const loadbtn = document.getElementById("load-more-btn");
 
 let allMovies = [];
-let sortBy = "";
+let sortBy = "relevance";
 let genres = [];
 let currentPage = 1;
 const resultsPerPage = 12;
