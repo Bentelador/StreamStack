@@ -69,6 +69,7 @@ function displayResults(currentResults) {
     
     // Clear previous results
     resultsGrid.innerHTML = '';
+    const resultsToShow = currentResults;
     
     // Display results
     resultsToShow.forEach(movie => {
