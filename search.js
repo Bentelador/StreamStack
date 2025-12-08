@@ -39,7 +39,7 @@ async function loadMovies() {
 
 
 // Perform search
-function performSearch(searchTerm = "") {
+async function performSearch(searchTerm = "") {
     query = searchTerm || document.getElementById('searchInput').value.trim();
     const res = searchfunc(query,genres,sortBy);
     currentPage = 1;
@@ -47,8 +47,9 @@ function performSearch(searchTerm = "") {
     updateResultsInfo(query, currentResults);
 }
 
-function performSort() {
-    const res = searchfunc(query,genres,sortBy);
+async function performSort() {
+    const res = await searchfunc(query,genres,sortBy);
+    console.log(res)
     displayResults(res);
     updateResultsInfo(query, currentResults);
 }
