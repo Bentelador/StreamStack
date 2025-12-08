@@ -33,7 +33,7 @@ async function loadMovies() {
         const OutsideSearch = await ben(searchQuery, "relevance", allMovies);
         console.log(OutsideSearch);
         displayResults(OutsideSearch);
-        updateResultsInfo(searchQuery,currentResults);
+        updateResultsInfo(searchQuery,OutsideSearch);
     }
 }
 
@@ -303,11 +303,11 @@ function addToWatchlist(movieId, movieTitle) {
         alert(`"${movieTitle}" is already in your watchlist!`);
     }
 }
-
-genreList.addEventListener("change", (event) => {
+genreList.forEach(checkbox => {
+checkbox.addEventListener("change", (event) => {
     console.log(event.target.value);
     sortResults(event.target,"genre");
-})
+}})
 
 // Handle search input Enter key
 document.getElementById('searchInput').addEventListener('keypress', function(e) {
