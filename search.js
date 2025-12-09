@@ -30,7 +30,10 @@ async function loadMovies() {
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get('search');
     const searchGenre = urlParams.getAll('genre');
-
+    const searchSort = urlParams.get('sort');
+    if (searchSort) {
+       sortBy = searchSort
+    }
     if (searchGenre) {
         searchGenre.forEach(element => {
             console.log(element)
@@ -38,14 +41,14 @@ async function loadMovies() {
         })
         document.getElementById('searchInput').value = searchQuery;
         query = searchQuery
-        const currentResults = await searchfunc(searchQuery,genres,"relevance",allMovies);
+        const currentResults = await searchfunc(searchQuery,genres,sortBy,allMovies);
         currentPage = 1;
         displayResults(currentResults);
         updateResultsInfo(query, currentResults);
     } else{
         document.getElementById('searchInput').value = searchQuery;
         query = searchQuery
-        const OutsideSearch = await ben(searchQuery, "relevance", allMovies,);
+        const OutsideSearch = await ben(searchQuery, sortBy, allMovies,);
         displayResults(OutsideSearch);
         updateResultsInfo(searchQuery,OutsideSearch);
     }
