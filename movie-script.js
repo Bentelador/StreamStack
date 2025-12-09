@@ -95,7 +95,6 @@ function closeAllPanels() {
     document.getElementById('filterPanel').classList.remove('active');
     document.getElementById('profilePanel').classList.remove('active');
     document.querySelector('.overlay').classList.remove('active');
-    hideSearchSuggestions();
 }
 
 
@@ -128,6 +127,7 @@ document.getElementById('mainSearchInput').addEventListener('keypress', function
             });
     }
 });
+
 
 
 
