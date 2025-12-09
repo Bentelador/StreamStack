@@ -163,7 +163,7 @@ function showMovieDetails(movie) {
     `;
     const watchlistBtn = container.querySelector(".watchlist-btn").addEventListener("click", () => {
     addToWatchlist(movie.id, movie.title);
-    };
+    });
     // Highlight selected card
     document.querySelectorAll('.movie-card').forEach(card => {
         card.classList.remove('selected');
