@@ -177,7 +177,7 @@ function showSearchSuggestions(query) {
     );
     
     const filteredMovies = result.sort((a,b) => {
-      return matching(b.title,ss) - matching(a.title,ss);
+      return matching(b.title,query) - matching(a.title,query);
     }).slice(0,5);
     
     if (filteredMovies.length === 0) {
@@ -633,4 +633,5 @@ async function loadMovies() {
 
 
 loadMovies();
+
 
