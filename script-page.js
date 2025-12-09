@@ -470,6 +470,8 @@ function scrollto(elementtarget){
 }
 
 async function loadMovies() {
+    const response = await fetch('https://raw.githubusercontent.com/Bentelador/movie-bai/refs/heads/main/MDB.json');
+    let allMovies = await response.json();
     const maxnum = 15;
     console.log(allMovies);
     let curmov = allMovies.slice(0,maxnum);
@@ -633,5 +635,6 @@ async function loadMovies() {
 
 
 loadMovies();
+
 
 
