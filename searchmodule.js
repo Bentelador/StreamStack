@@ -34,6 +34,11 @@ async function sorta(sort,result,ss) {
           return yearB.year - yearA.year;
         })
     }
+  if (sort == "popularity") {
+        bb = result.sort((yearA,yearB) => {
+          return yearB.votes - yearA.votes;
+        })
+    }
   if (sort == "rating") {
         bb = result.sort((A,B) => {
           return B.rating - A.rating;
@@ -72,6 +77,7 @@ async function searchfunc(serch, BS, sort, jsonData){
 
 export default ben
 export { searchfunc }
+
 
 
 
