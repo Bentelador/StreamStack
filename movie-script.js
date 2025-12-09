@@ -55,11 +55,11 @@ function applyGenreFilter() {
 async function loadMovies() {
         const response = await fetch('https://raw.githubusercontent.com/Bentelador/movie-bai/refs/heads/main/MDB.json');
         let Movies = await response.json();
-        Movies = Movies.filter(n => n.id.includes(ids));
+        Movies = allMovies.filter(n => n.id.includes(ids));
         const buns = document.getElementById('main-content').innerHTML;
         document.getElementById('main-content').innerHTML = ``;
         document.getElementById('main-content').innerHTML = `
-        <iframe  class="main-watch" id="main-watch" src="https://vidsrc.to/embed/movie/${ids}" allow="fullscreen;"></iframe>
+        
             <div class="thumb-desc-container">
                 <div class="thumbnail-container">
                     <img class="thumbnail" src="${Movies[0].image}" alt="">
@@ -77,6 +77,38 @@ async function loadMovies() {
                 </div>                    
             </div>`;
             console.log(buns);
+
+            allMovies = allMovies.filter(obj1 =>
+            obj1.genre.some(g1 =>
+                Movies.some(obj2 => obj2.genre.includes(g1))
+            )
+            );
+            console.log(allMovies)
+            allMovies = allMovies.slice(0,5);
+            console.log(allMovies)
+            allMovies.forEach(element => {
+                document.getElementById('watch-more-rows').innerHTML = document.getElementById('watch-more-rows').innerHTML + `
+                <div class="netflix-movie-card">
+                    <img class="netflix-movie-poster" src="${element.image}"></img>
+                    <div class="netflix-movie-title">${element.title}</div>
+                    <div class="netflix-movie-actions">
+                        <div class="netflix-action-row">
+                            <div class="netflix-main-actions">
+                                <button class="netflix-play-btn" onclick="playMovie('Movie 1')">▶</button>
+
+                            </div>
+                            <button class="netflix-info-btn" onclick="showMovieInfo('Movie 1')">ℹ</button>
+                        </div>
+                        <div class="netflix-movie-info">
+                            <div class="netflix-movie-match">${element.rating * 10}%</div>
+                            <div class="netflix-movie-genres">${element.genre}</div>
+                            <span class="netflix-hd-badge">HD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+            });
 }
+
 
 loadMovies()
