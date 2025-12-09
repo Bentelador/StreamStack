@@ -475,7 +475,7 @@ async function loadMovies() {
     let allMovies = await response.json();
     const maxnum = 15;
     document.getElementById('hero').innerHTML = ``;
-    const Main = document.querySelector('.hero')
+    const Main = document.getElementById('hero');
         document.getElementById('hero').innerHTML = `
                 <div class="hero-content">
                     <h1 class="movie-title">${mainMovs[0].title}</h1>
@@ -656,6 +656,7 @@ async function loadMovies() {
 
 
 loadMovies();
+
 
 
 
