@@ -1,6 +1,5 @@
 const params = new URLSearchParams(window.location.search);
 const ids = params.get("id");
-let selectedGenres = [];
 
 async function loadMovies() {
         const response = await fetch('https://raw.githubusercontent.com/Bentelador/movie-bai/refs/heads/main/MDB.json');
@@ -67,28 +66,10 @@ async function loadMovies() {
 }
 loadMovies();
 
-// Filter functionality
-function applyGenreFilter() {
-    selectedGenres = [];
-    const checkboxes = document.querySelectorAll('.genre-checkbox input:checked');
-    
-    checkboxes.forEach(checkbox => {
-        selectedGenres.push(checkbox.value);
-    });
-    
-    if (selectedGenres.length === 0) {
-        alert('Please select at least one genre');
-        return;
-    }
-    
-    console.log('Filtering by genres:', selectedGenres);
-    alert(`Filtering movies by: ${selectedGenres.join(', ')}`);
-    closeAllPanels();
-}
-
 document.getElementById('homebtn').addEventListener('click',function(){
         window.location.href = "main-movie-page.html"
 });
+
 
 
 
