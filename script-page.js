@@ -522,7 +522,14 @@ async function loadMovies() {
     });
     document.getElementById('top-movies-row').innerHTML += seemore;
 
-    curmov = allMovies.filter(n => n.genre.includes('Action')).slice(0,maxnum);
+
+    const maxStartIndex = allMovies.length - 5; // make sure we have 5 elements
+
+        // Generate random start index
+        const randomStart = Math.floor(Math.random() * (maxStartIndex + 1));
+        
+    curmov = allMovies.filter(n => n.genre.includes('Action'));
+    curmov = curmov.slice(randomStart, randomStart + maxnum);
     seemore = document.getElementById('action-movies-row').innerHTML;
     document.getElementById('action-movies-row').innerHTML = ``;
     curmov.forEach(element => {
@@ -549,6 +556,7 @@ async function loadMovies() {
     document.getElementById('action-movies-row').innerHTML += seemore;
 
     curmov = allMovies.filter(n => n.genre.includes('Drama')).slice(0,maxnum);
+    curmov = curmov.slice(randomStart, randomStart + maxnum);
     seemore = document.getElementById('Drama-movies-row').innerHTML;
     document.getElementById('Drama-movies-row').innerHTML = ``;
     curmov.forEach(element => {
@@ -657,6 +665,7 @@ async function loadMovies() {
 
 
 loadMovies();
+
 
 
 
