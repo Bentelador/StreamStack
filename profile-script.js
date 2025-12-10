@@ -45,7 +45,7 @@ function loadUserData() {
     const userFullName = localStorage.getItem('userFullName') || 'User Name';
     
     // Update profile page
-    const userName = document.getElementById'userFullName');
+    const userName = document.getElementById('userFullName');
     const userEmailElement = document.getElementById('userEmail');
     
     if (userName) userName.textContent = userFullName;
@@ -291,6 +291,7 @@ function showToast(message) {
     }, 3000);
 
 }
+
 
 
 
