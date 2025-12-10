@@ -10,12 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Load saved settings
     loadSavedSettings();
-
-    // Initialize search functionality
-    loadMoviesForSearch();
-    
-    // Initialize event listeners
-    initializeEventListeners();
 });
 
 function loadUserData() {
@@ -527,4 +521,5 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
 });
+
 
