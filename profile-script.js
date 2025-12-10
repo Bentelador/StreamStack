@@ -19,7 +19,7 @@ function addmovie(buns) {
     document.getElementById('act-list').innerHTML = `<div class="activity-item">
                         <div class="activity-poster"><img class="activity-poster" src="${buns[0].image}"></div>
                         <div class="activity-info">
-                            <<div class="activity-title">${buns[0].title}</div>
+                            <div class="activity-title">${buns[0].title}</div>
                             <div class="activity-time">Watched 2 hours ago</div>
                         </div>
                     </div>
@@ -291,6 +291,7 @@ function showToast(message) {
     }, 3000);
 
 }
+
 
 
 
