@@ -21,14 +21,6 @@ function matching(result, ss) {
 
     return matches;
 }
-async function sorter(sort,result,ss){
-  let bb;
-   bb = result.sort((yearA,yearB) => {
-          return yearB.votes - yearA.votes;
-    });
-  bb - bb.slice(0-20);
-  return bb
-}
 
 async function sorta(sort,result,ss) {
   let bb;
@@ -48,9 +40,15 @@ async function sorta(sort,result,ss) {
         })
     }
   if (sort == "rating") {
-    const waiter = await sorter(sort,result,ss);
-        bb = waiter.sort((A,B) => {
-          return B.rating - A.rating;
+        bb = result.sort((a, b) => {
+          const ratingDiff = Math.abs(a.rating - b.rating);
+              if (ratingDiff > 1) {
+                  return b.rating - a.rating;
+              }
+          
+              // Otherwise votes dominate (strongly)
+              return b.votes - a.votes;
+          });
         });
     }
   if (sort == "title") {
@@ -86,6 +84,7 @@ async function searchfunc(serch, BS, sort, jsonData){
 
 export default ben
 export { searchfunc }
+
 
 
 
