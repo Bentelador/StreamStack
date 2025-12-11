@@ -8,6 +8,9 @@
     <link rel="icon" href="logo.png" type="image/png">
 </head>
 <body>
+    <div class="animated-bg"></div>
+    <div class="screen-flair" id="screenFlair"></div>
+    <div class="film-grain"></div>
     <!-- Header -->
 <div class="main-header">
     <div class="header-left">
@@ -362,11 +365,28 @@
             });
         }
     });
+
+    function createFloatingParticles() {
+            const flair = document.getElementById('screenFlair');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'flair-particle';
+                particle.style.width = Math.random() * 100 + 50 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = 10 + Math.random() * 10 + 's';
+                flair.appendChild(particle);
+            }
+        }
+
+        createFloatingParticles();
 </script>
 
 </body>
 
 </html>
+
 
 
 
