@@ -240,7 +240,7 @@ function createMovieCard(movie) {
     </div>
     `;
 
-    const btn = document.getElementById(`.watchlist-btn${movie.id}`)
+    const btn = document.getElementById(`watchlist-btn${movie.id}`)
     btn.addEventListener('click', function() {
             const movieId = this.dataset.movieId;
             const movieTitle = this.dataset.movieTitle;
@@ -267,7 +267,7 @@ function removeFromWatchlist(movieId, movieTitle,btn,isInWatchlist) {
                         data-in-watchlist="${isInWatchlist}"
                         title="Add to Watchlist">+ Watchlist
                 </button>`;
-    const btna = document.getElementById(`.watchlist-btn${movieId}`)
+    const btna = document.getElementById(`watchlist-btn${movieId}`)
     btna.addEventListener('click', function() {
             const movieId = this.dataset.movieId;
             const movieTitle = this.dataset.movieTitle;
@@ -374,7 +374,7 @@ function addToWatchlist(movieId, movieTitle,btn,isInWatchlist) {
                    ✓ In Watchlist
                 </button>`;
 
-    const btna = document.getElementById(`.watchlist-btn${movieId}`)
+    const btna = document.getElementById(`watchlist-btn${movieId}`)
 
     btna.addEventListener('click', function() {
             const movieId = this.dataset.movieId;
