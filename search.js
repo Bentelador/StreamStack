@@ -129,6 +129,7 @@ function updateActiveFiltersDisplay() {
 }
             
             updateActiveFiltersDisplay();
+            performSearch();
         });
     });
 }
