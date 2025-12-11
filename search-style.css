@@ -858,10 +858,6 @@
     }
 }
 
-/* Search button hover animation */
-.search-btn:hover {
-    animation: buttonShake 0.5s ease;
-}
 
 @keyframes buttonShake {
     0%, 100% { transform: translateX(0); }
