@@ -245,15 +245,16 @@ function createMovieCard(movie) {
             const movieId = this.dataset.movieId;
             const movieTitle = this.dataset.movieTitle;
             let isInWatchlist = this.dataset.inWatchlist === 'true';
+        console.log(isInWatchlist);
 
             if (isInWatchlist) {
                 removeFromWatchlist(movieId, movieTitle, this, isInWatchlist);
-                this.dataset.inWatchlist = 'true';
+                this.dataset.inWatchlist = 'false';
                 this.classList.remove('added');
                 this.textContent = '+ Watchlist';
             } else {
                 addToWatchlist(movieId, movieTitle, this);
-                this.dataset.inWatchlist = 'false';
+                this.dataset.inWatchlist = 'true';
                 this.classList.add('added');
                 this.textContent = '✓ In Watchlist';
             }
