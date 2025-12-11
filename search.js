@@ -286,9 +286,9 @@ function sortResults(rad,value) {
         if (rad.checked) {
         genres.push(rad.value);
         } else {
-            console.log(genres)
+            console.log(genres, rad.value)
             genres = genres.filter(item => item !== rad.value);
-            console.log(genres)
+            console.log(genres, rad.value)
         }
     }
     
