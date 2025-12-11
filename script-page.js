@@ -354,34 +354,34 @@ function openWatchlistOptions(movieId, movieTitle) {
                 <button class="modal-close" onclick="closeModal()">×</button>
             </div>
             <div class="status-options">
-                <div class="status-option" onclick="updateMovieStatus(${movieId}, 'watching')">
+                <div class="status-option" onclick="updateMovieStatus('${movieId}', 'watching')">
                     <span class="status-dot watching"></span>
                     <span class="status-text">Watching</span>
                     <span class="status-desc">Currently watching</span>
                 </div>
-                <div class="status-option" onclick="updateMovieStatus(${movieId}, 'completed')">
+                <div class="status-option" onclick="updateMovieStatus('${movieId}', 'completed')">
                     <span class="status-dot completed"></span>
                     <span class="status-text">Completed</span>
                     <span class="status-desc">Finished watching</span>
                 </div>
-                <div class="status-option" onclick="updateMovieStatus(${movieId}, 'on-hold')">
+                <div class="status-option" onclick="updateMovieStatus('${movieId}', 'on-hold')">
                     <span class="status-dot on-hold"></span>
                     <span class="status-text">On Hold</span>
                     <span class="status-desc">Paused watching</span>
                 </div>
-                <div class="status-option" onclick="updateMovieStatus(${movieId}, 'plan-to-watch')">
+                <div class="status-option" onclick="updateMovieStatus('${movieId}', 'plan-to-watch')">
                     <span class="status-dot plan-to-watch"></span>
                     <span class="status-text">Plan to Watch</span>
                     <span class="status-desc">Want to watch later</span>
                 </div>
-                <div class="status-option" onclick="updateMovieStatus(${movieId}, 'dropped')">
+                <div class="status-option" onclick="updateMovieStatus('${movieId}', 'dropped')">
                     <span class="status-dot dropped"></span>
                     <span class="status-text">Dropped</span>
                     <span class="status-desc">Stopped watching</span>
                 </div>
             </div>
             <div class="modal-actions">
-                <button class="remove-btn" onclick="removeFromWatchlist(${movieId})">Remove from Watchlist</button>
+                <button class="remove-btn" onclick="removeFromWatchlist('${movieId}')">Remove from Watchlist</button>
             </div>
         </div>
     `;
@@ -663,6 +663,7 @@ async function loadMovies() {
 
 
 loadMovies();
+
 
 
 
