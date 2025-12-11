@@ -248,12 +248,12 @@ function createMovieCard(movie) {
 
             if (isInWatchlist) {
                 removeFromWatchlist(movieId, movieTitle, this, isInWatchlist);
-                this.dataset.inWatchlist = 'false';
+                this.dataset.inWatchlist = 'true';
                 this.classList.remove('added');
                 this.textContent = '+ Watchlist';
             } else {
                 addToWatchlist(movieId, movieTitle, this);
-                this.dataset.inWatchlist = 'true';
+                this.dataset.inWatchlist = 'false';
                 this.classList.add('added');
                 this.textContent = '✓ In Watchlist';
             }
@@ -263,7 +263,7 @@ function createMovieCard(movie) {
 }
 
 function removeFromWatchlist(movieId, movieTitle,btn,isInWatchlist) {
-    btn.parentNode.innerHTML = `<button id="watchlist-btn${movieId}"
+    btn.outerHTML = `<button id="watchlist-btn${movieId}"
                         class="watchlist-btn ${isInWatchlist ? 'added' : ''}"
                         data-movie-id="${movieId}"
                         data-movie-title="${movieTitle}"
@@ -354,7 +354,7 @@ function formatNumber(num) {
 // Add to watchlist function
 function addToWatchlist(movieId, movieTitle,btn,isInWatchlist) {
     // Get existing watchlist
-    btn.parentNode.innerHTML = `<button id="watchlist-btn${movieId}"
+    btn.outerHTML = `<button id="watchlist-btn${movieId}"
                         class="watchlist-btn ${isInWatchlist ? 'added' : ''}"
                         data-movie-id="${movieId}"
                         data-movie-title="${movieTitle}"
