@@ -240,7 +240,7 @@ function createMovieCard(movie) {
     </div>
     `;
 
-    const btn = card.querySelector('.watchlist-btn')
+    const btn = card.querySelector(`.watchlist-btn${movieId}`
     btn.addEventListener('click', function() {
             const movieId = this.dataset.movieId;
             const movieTitle = this.dataset.movieTitle;
@@ -260,14 +260,15 @@ function createMovieCard(movie) {
 }
 
 function removeFromWatchlist(movieId, movieTitle,btn,isInWatchlist) {
-    btn.outerHTML = `<button id="watchlist-btn"
+    btn.outerHTML = `<button id="watchlist-btn${movieId}"
                         class="watchlist-btn"
                         data-movie-id="${movieId}"
                         data-movie-title="${movieTitle}"
                         data-in-watchlist="${isInWatchlist}"
                         title="Add to Watchlist">+ Watchlist
                 </button>`;
-    btn.addEventListener('click', function() {
+    const btna = card.querySelector(`.watchlist-btn${movieId}`)
+    btna.addEventListener('click', function() {
             const movieId = this.dataset.movieId;
             const movieTitle = this.dataset.movieTitle;
             let isInWatchlist = this.dataset.inWatchlist === 'true';
@@ -364,16 +365,18 @@ function formatNumber(num) {
 // Add to watchlist function
 function addToWatchlist(movieId, movieTitle,btn,isInWatchlist) {
     // Get existing watchlist
-    btn.outerHTML = `<button id="watchlist-btn"
+    btn.outerHTML = `<button id="watchlist-btn${movieId}"
                         class="watchlist-btn added"
                         data-movie-id="${movieId}"
                         data-movie-title="${movieTitle}"
                         data-in-watchlist="${isInWatchlist}"
                         title="In Watchlist">
-                   ✓ In Watchlist'
+                   ✓ In Watchlist
                 </button>`;
 
-    btn.addEventListener('click', function() {
+    const btna = card.querySelector(`.watchlist-btn${movieId}`
+
+    btna.addEventListener('click', function() {
             const movieId = this.dataset.movieId;
             const movieTitle = this.dataset.movieTitle;
             let isInWatchlist = this.dataset.inWatchlist === 'true';
