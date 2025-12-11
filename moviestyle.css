@@ -956,3 +956,125 @@ body {
     border-left: 4px solid #e50914;
 }
 
+/* ===== VIDEO PLAYER DESIGN UPDATE ===== */
+
+/* Player container */
+.main-watch {
+    height: 67vh;
+    width: 120vh;
+    background-color: #000;
+    border-radius: 12px 12px 0 0;
+    display: block;
+    border: none;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    position: relative;
+}
+
+/* Info panel below player */
+.thumb-desc-container {
+    display: flex;
+    width: 120vh;
+    padding: 30px 40px;
+    background: linear-gradient(to top, #181818, #000);
+    border-radius: 0 0 12px 12px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 40px;
+    margin-top: -5px; /* slight overlap with player */
+    z-index: 1;
+    position: relative;
+    border-top: 1px solid #333;
+}
+
+/* Thumbnail container */
+.thumbnail-container {
+    height: 260px;
+    min-width: 180px;
+    width: 180px;
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.thumbnail-container:hover {
+    transform: scale(1.03);
+    border-color: #e50914;
+}
+
+.thumbnail {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Title and description area */
+.title-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 700px;
+    color: #fff;
+    padding-top: 10px;
+}
+
+.title h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+}
+
+.desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #d2d2d2;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    max-width: 95%;
+}
+
+.li-datas ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.li-datas li {
+    font-size: 1.05rem;
+    color: #aaa;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s;
+}
+
+.li-datas li:hover {
+    background: rgba(229, 9, 20, 0.15);
+    color: #fff;
+}
+
+/* Optional: Add a subtle glow effect on player hover */
+.main-watch:hover {
+    box-shadow: 0 25px 50px rgba(229, 9, 20, 0.15);
+}
+
+/* Responsive touch for very wide screens */
+@media (min-width: 1600px) {
+    .main-watch {
+        width: 140vh;
+    }
+    .thumb-desc-container {
+        width: 140vh;
+    }
+}
