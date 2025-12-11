@@ -249,14 +249,10 @@ function createMovieCard(movie) {
 
             if (isInWatchlist) {
                 removeFromWatchlist(movieId, movieTitle, this, isInWatchlist);
-                this.dataset.inWatchlist = 'false';
-                this.classList.remove('added');
-                this.textContent = '+ Watchlist';
+                this.dataset.inWatchlist = 'true';
             } else {
                 addToWatchlist(movieId, movieTitle, this);
-                this.dataset.inWatchlist = 'true';
-                this.classList.add('added');
-                this.textContent = '✓ In Watchlist';
+                this.dataset.inWatchlist = 'false';
             }
         });
     
@@ -264,13 +260,12 @@ function createMovieCard(movie) {
 }
 
 function removeFromWatchlist(movieId, movieTitle,btn,isInWatchlist) {
-    btn.outerHTML = `<button id="watchlist-btn${movieId}"
-                        class="watchlist-btn ${isInWatchlist ? 'added' : ''}"
+    btn.outerHTML = `<button id="watchlist-btn"
+                        class="watchlist-btn"
                         data-movie-id="${movieId}"
                         data-movie-title="${movieTitle}"
                         data-in-watchlist="${isInWatchlist}"
-                        title="${isInWatchlist ? 'In Watchlist' : 'Add to Watchlist'}">
-                    ${isInWatchlist ? '✓ In Watchlist' : '+ Watchlist'}
+                        title="Add to Watchlist">+ Watchlist
                 </button>`;
     
     let userWatchlist = JSON.parse(localStorage.getItem('userWatchlist') || '[]');
@@ -355,13 +350,13 @@ function formatNumber(num) {
 // Add to watchlist function
 function addToWatchlist(movieId, movieTitle,btn,isInWatchlist) {
     // Get existing watchlist
-    btn.outerHTML = `<button id="watchlist-btn${movieId}"
-                        class="watchlist-btn ${isInWatchlist ? 'added' : ''}"
+    btn.outerHTML = `<button id="watchlist-btn"
+                        class="watchlist-btn added"
                         data-movie-id="${movieId}"
                         data-movie-title="${movieTitle}"
                         data-in-watchlist="${isInWatchlist}"
-                        title="${isInWatchlist ? 'In Watchlist' : 'Add to Watchlist'}">
-                    ${isInWatchlist ? '✓ In Watchlist' : '+ Watchlist'}
+                        title="In Watchlist">
+                   ✓ In Watchlist'
                 </button>`;
     
     let watchlist = JSON.parse(localStorage.getItem('userWatchlist') || '[]');
