@@ -89,7 +89,7 @@ function updateActiveFiltersDisplay() {
     let html = '<div class="active-filters-title">Active Filters:</div>';
     
     if (query) {
-        html += `<span class="active-filter">Search: "${currentSearchTerm}" 
+        html += `<span class="active-filter">Search: "${query}" 
                  <button class="remove-filter" data-type="search">×</button></span>`;
     }
 
