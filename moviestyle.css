@@ -426,7 +426,6 @@ body {
     display: flex;
     margin-top: 100px;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* videoplayer */
@@ -493,7 +492,7 @@ body {
     display: flex;
     padding: 0 50px;
     align-items: center;
-    background-color: rgba(89, 89, 89, 0.2);
+    background-color: rgba(0,0,0, 0.2);
     border-radius: 0px 0px 30px 30px; 
     justify-content: start;
     overflow: auto;
@@ -1163,4 +1162,5 @@ body {
         width: 140vh;
     }
 }
+
 
