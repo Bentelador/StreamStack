@@ -133,7 +133,7 @@ let searchTimeout;
 // Load movies for search suggestions
 async function loadMoviesForSearch() {
     try {
-        const response = await fetch('https://raw.githubusercontent.com/Bentelador/movie-bai/refs/heads/main/MDB.json');
+        const response = await fetch('https://raw.githubusercontent.com/Bentelador/StreamStack/refs/heads/main/MDB.json');
         allMovies = await response.json();
     } catch (error) {
         console.error('Error loading movies for search:', error);
@@ -469,7 +469,7 @@ function scrollto(elementtarget){
 }
 
 async function loadMovies() {
-    const response = await fetch('https://raw.githubusercontent.com/Bentelador/movie-bai/refs/heads/main/MDB.json');
+    const response = await fetch('https://raw.githubusercontent.com/Bentelador/StreamStack/refs/heads/main/MDB.json');
     let allMovies = await response.json();
     const maxnum = 15;
     document.getElementById('hero').innerHTML = ``;
@@ -663,6 +663,7 @@ async function loadMovies() {
 
 
 loadMovies();
+
 
 
 
