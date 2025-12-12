@@ -29,7 +29,7 @@ function playMovie(movieId) {
 
 // Load movies from JSON file
 async function loadMovies() {
-        const response = await fetch('https://raw.githubusercontent.com/Bentelador/movie-bai/refs/heads/main/MDB.json');
+        const response = await fetch('https://raw.githubusercontent.com/Bentelador/StreamStack/refs/heads/main/MDB.json');
         allMovies = await response.json();
         console.log(`Loaded ${allMovies.length} movies`);
     
