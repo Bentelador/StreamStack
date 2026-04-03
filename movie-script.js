@@ -8,7 +8,7 @@ async function loadMovies() {
         const buns = document.getElementById('main-content').innerHTML;
         document.getElementById('main-content').innerHTML = ``;
         document.getElementById('main-content').innerHTML = `
-        <iframe  class="main-watch" id="main-watch" src="https://vidsrc-embed.ru/embed/movie/${ids}" allow="fullscreen;"></iframe>
+        <iframe  class="main-watch" id="main-watch" src="https://vidsrc-embed.ru/embed/movie/${ids}" allowfullscreen"></iframe>
             <div class="thumb-desc-container">
                 <div class="thumbnail-container">
                     <img class="thumbnail" src="${Movies[0].image}" alt="">
